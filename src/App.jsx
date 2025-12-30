@@ -1,10 +1,10 @@
 import React from 'react'
-import ReduxToolkit from './Tasks/Redux/ReduxToolkit'
+import LocalStorage from './Tasks/LocalStorage/UserCard'
 
 const App = () => {
   return (
     <div>
-        <ReduxToolkit/>
+        <LocalStorage/>
     </div>
   )
 }
