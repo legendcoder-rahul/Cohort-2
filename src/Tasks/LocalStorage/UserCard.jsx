@@ -22,6 +22,14 @@ const UserCard = () => {
     setimg("");
   };
 
+  const handleDelete = (idx) =>{
+    const copyuser = [...alluser]
+    console.log(copyuser);
+    copyuser.splice(idx,1)
+    setalluser(copyuser)
+    
+    
+  }
   return (
     <div>
       <h1>user Form</h1>
@@ -65,8 +73,8 @@ const UserCard = () => {
         </button>
       </form>
 
+      <h2>card</h2>
       <div className="user-card">
-        <h2>card</h2>
         {alluser.map((elem, idx) => {
           return (
             <div className="card" key={idx}>
@@ -78,6 +86,7 @@ const UserCard = () => {
                 <p>Name : {elem.name}</p>
                 <p>Roll : {elem.roll}</p>
                 <p>Description : {elem.dec}</p>
+                <button className="submit" onClick={handleDelete}>Delete</button>
               </div>
             </div>
           );

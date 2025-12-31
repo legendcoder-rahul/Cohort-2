@@ -33,7 +33,7 @@ input {
   
 }
 
-.user-card h2 {
+h2 {
   margin: 20px 40px;
 }
 .card img {
@@ -77,3 +77,15 @@ input {
     background-color: grey;
 }
 
+.user-card{
+  display: flex;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap:10px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+
+}
