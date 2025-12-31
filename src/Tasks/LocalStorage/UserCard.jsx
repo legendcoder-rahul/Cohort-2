@@ -7,7 +7,9 @@ const UserCard = () => {
   const [img, setimg] = useState("");
   const [dec, setdec] = useState("");
 
-  const [alluser, setalluser] = useState([]);
+
+  const localData = JSON.parse(localStorage.getItem('all-users')) || []
+  const [alluser, setalluser] = useState(localData);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,6 +18,8 @@ const UserCard = () => {
     oldUsers.push({ name, roll, img, dec });
 
     setalluser(oldUsers);
+    localStorage.setItem('all-users',JSON.stringify(oldUsers))
+
     setname("");
     setroll("");
     setdec("");
@@ -24,9 +28,15 @@ const UserCard = () => {
 
   const handleDelete = (idx) =>{
     const copyuser = [...alluser]
-    console.log(copyuser);
-    copyuser.splice(idx,1)
+    const conf = confirm('Are you really want to delete this element?')
+    if(conf){
+
+     copyuser.splice(idx,1)
+    }else{
+      alert('element Not Deleted')
+    }
     setalluser(copyuser)
+    localStorage.setItem('all-users',JSON.stringify(copyuser))
     
     
   }
@@ -34,6 +44,7 @@ const UserCard = () => {
     <div>
       <h1>user Form</h1>
       <form onSubmit={handleSubmit}>
+        <div>
         <input
           type="text"
           placeholder="Enter Name"
@@ -45,7 +56,7 @@ const UserCard = () => {
 
         <input
           type="text"
-          placeholder="Image"
+          placeholder="Image Url"
           value={img}
           onChange={(e) => {
             setimg(e.target.value);
@@ -68,12 +79,13 @@ const UserCard = () => {
             setdec(e.target.value);
           }}
         />
+        </div>
         <button className="submit" type="submit">
           Submit
         </button>
       </form>
 
-      <h2>card</h2>
+      <h2>Card</h2>
       <div className="user-card">
         {alluser.map((elem, idx) => {
           return (

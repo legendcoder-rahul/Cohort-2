@@ -14,14 +14,22 @@ body {
 
 form {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  column-gap: 20px;
+  flex-direction: column;   /* stack items vertically */
+  align-items: center;      /* center horizontally */
+  min-height: 100vh;        /* full screen height */
+  gap: 20px;
   
 }
+
 h1 {
   text-align: center;
+}
+
+form div{
+  flex-wrap: wrap;
+  grid-row: 1fr 2;
+  margin: 20px 10%;
+  
 }
 
 input {
@@ -29,9 +37,8 @@ input {
   color: white;
   padding: 20px 40px;
   border: 1px solid white;
-  margin-top: 20px;
-  
 }
+
 
 h2 {
   margin: 20px 40px;
